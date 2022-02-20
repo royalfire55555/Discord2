@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBa7A2r-vvJ-wjobcm4Cz8gv0lr1zWl8UE",
+            authDomain: "discord2-45953.firebaseapp.com",
+            projectId: "discord2-45953",
+            storageBucket: "discord2-45953.appspot.com",
+            messagingSenderId: "95721734353",
+            appId: "1:95721734353:web:51517f552ff88bfef305f0"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <title>Discord 2.0</title>
+</head>
+
+<body>
+    <h1>Discord 2.0</h1>
+    <div id="messagesBox"></div>
+    <button>Create Chat</button>
+    <input type="text" id="messageSend">
+</body>
+
+</html>
