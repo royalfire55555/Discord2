@@ -1,5 +1,5 @@
 class Client {
-    constructor(person = string) {
+    constructor(person) {
         this.person = person;
 
         if (localStorage.getItem("messages")) {
@@ -10,18 +10,18 @@ class Client {
         }
     }
 
-    updateMessages(){
+    updateMessages() {
         database.ref("/").on("value", function (data) {
             this.messages = data.val()
         })
     }
 
-    sendMessage(message = string) {
+    sendMessage(message) {
         database.ref("/").update({
             msgs: this.messages.push({
                 person: this.person,
                 message: message
-            })
+            }).toString()
         })
     }
 
@@ -30,7 +30,7 @@ class Client {
     }
 
     handleExit() {
-        window.addEventListener("beforeunload", function(e) {
+        window.addEventListener("beforeunload", function (e) {
             this.save()
         })
     }
