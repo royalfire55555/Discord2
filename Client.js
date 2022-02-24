@@ -8,25 +8,38 @@ class Client {
         } else {
             this.messages = []
         }
+
+        if (localStorage.getItem("people")) {
+            console.log("Retrieving people")
+            this.people = localStorage.getItem("people");
+        } else {
+            this.people = []
+        }
     }
 
     updateMessages() {
-        database.ref("/").on("value", function (data) {
-            this.messages = data.val()
+        database.ref("msgs").on("value", function (data) {
+            this.messages = data.val();
+        })
+
+        database.ref("ppl").on("value", function (data) {
+            this.people = data.val();
         })
     }
 
     sendMessage(message) {
+        this.messages.push(message);
+        this.people.push(this.person);
+
         database.ref("/").update({
-            msgs: this.messages.push({
-                person: this.person,
-                message: message
-            }).toString()
+            msgs: this.messages.toString(),
+            ppl: this.people.toString(),
         })
     }
 
     save() {
-        localStorage.setItem("messages", this.messages)
+        localStorage.setItem("messages", this.messages);
+        localStorage.setItem("people", this.people);
     }
 
     handleExit() {
@@ -34,4 +47,6 @@ class Client {
             this.save()
         })
     }
+
+
 }

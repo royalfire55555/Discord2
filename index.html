@@ -8,9 +8,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 
-    <script src="Client.js"></script>
-    <script src="script.js"></script>
-
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBa7A2r-vvJ-wjobcm4Cz8gv0lr1zWl8UE",
@@ -22,8 +19,11 @@
             appId: "1:95721734353:web:51517f552ff88bfef305f0"
         };
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+        app = firebase.initializeApp(firebaseConfig);
     </script>
+
+    <script src="Client.js"></script>
+    <script src="script.js"></script>
 
     <title>Discord 2.0</title>
 </head>

@@ -1,5 +1,6 @@
 var person;
 var cookies = createCookies()
+var database = firebase.database();;
 
 if (cookies.length <= 0) {
     document.cookie = window.prompt("What is your (user)name?");
