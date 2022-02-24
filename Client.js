@@ -2,29 +2,16 @@ class Client {
     constructor(person) {
         this.person = person;
 
-        if (localStorage.getItem("messages")) {
-            console.log("Retrieving Messages")
-            this.messages = localStorage.getItem("messages");
-        } else {
-            this.messages = []
-        }
+        this.messages = []
 
-        if (localStorage.getItem("people")) {
-            console.log("Retrieving people")
-            this.people = localStorage.getItem("people");
-        } else {
-            this.people = []
-        }
+        this.people = []
     }
 
-    updateMessages() {
-        database.ref("msgs").on("value", function (data) {
-            this.messages = data.val();
-        })
+    update() {
+        this.messages = this.getData("msgs")
 
-        database.ref("ppl").on("value", function (data) {
-            this.people = data.val();
-        })
+        this.save();
+        this.showMsgs();
     }
 
     sendMessage(message) {
@@ -48,5 +35,20 @@ class Client {
         })
     }
 
+    showMsgs() {
+        this.msgBox = document.getElementById("messagesBox");
+        for (var i = 0; i < this.messages.length; i++) {
+            if (this.messages.length == this.people.length) {
+                var msg = this.messages[i];
+                var person = this.people[i];
+                this.msg.innerHTML += `${person}: ${msg}<br>`
+            }
+        }
+    }
 
+    getData(key) {
+        database.ref(key).on("value", function (data) {
+            return data.val();
+        })
+    }
 }

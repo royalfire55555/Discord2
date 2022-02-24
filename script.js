@@ -10,6 +10,10 @@ cookies = createCookies();
 person = new Client(cookies)
 console.log(cookies)
 
+function draw() {
+    person.update();
+}
+
 function sendMessage() {
     message = document.getElementById("messageSend").value;
 
